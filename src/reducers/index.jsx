@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { reducer } from "redux-form";
 const phonenumber = () => {
   return [
     {
@@ -34,5 +35,6 @@ const selectedNumber = (selectedNumber = null, actions) => {
 
 export default combineReducers({
   numbers: phonenumber,
-  selectednumber: selectedNumber
+  selectednumber: selectedNumber,
+  form: reducer
 });
