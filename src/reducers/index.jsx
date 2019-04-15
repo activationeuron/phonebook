@@ -33,7 +33,15 @@ const selectedNumber = (selectedNumber = null, actions) => {
   return selectedNumber;
 };
 
+const addContact = (contacts = [], action) => {
+  if (action.type === "ADD_CONTACT") {
+    return [...contacts, action.payload];
+  }
+  return contacts;
+};
+
 export default combineReducers({
+  addContact: addContact,
   numbers: phonenumber,
   selectednumber: selectedNumber,
   form: reducer
