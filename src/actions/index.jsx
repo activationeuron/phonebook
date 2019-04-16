@@ -11,3 +11,10 @@ export const AddContactRed = contact => {
     payload: contact
   };
 };
+
+export const deleteContact = id => {
+  return {
+    type: "DELETE_CONTACT",
+    payload: id
+  };
+};
