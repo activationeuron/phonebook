@@ -8,10 +8,10 @@ const NumberDetail = ({ number }) => {
   return (
     <div>
       <div className="collection">
-        <div className="collection-item">{number.name}</div>
-        <div className="collection-item">{number.num}</div>
-        <div className="collection-item">{number.email}</div>
-        <div className="collection-item">{number.address}</div>
+        <div className="collection-item">{number.contact.name}</div>
+        <div className="collection-item">{number.contact.phone}</div>
+        <div className="collection-item">{number.contact.email}</div>
+        <div className="collection-item">{number.contact.address}</div>
       </div>
     </div>
   );

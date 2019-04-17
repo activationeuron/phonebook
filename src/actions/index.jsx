@@ -5,7 +5,7 @@ export const selectedNumber = number => {
   };
 };
 
-export const addContactRed = contact => {
+export const AddContactRed = contact => {
   return {
     type: "ADD_CONTACT",
     payload: contact

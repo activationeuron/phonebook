@@ -1,54 +1,69 @@
 import React, { Component } from "react";
-import { Field, reduxForm } from "redux-form";
-class AddContact extends Component {
-  inputView({ input }) {
-    return (
-      <div className="field">
-        <label>{input.name}</label>
-        <input {...input} />
-      </div>
-    );
+import { connect } from "react-redux";
+import { AddContactRed } from "../actions/index";
+import { bindActionCreators } from "redux";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      phone: "",
+      email: "",
+      address: ""
+    };
   }
-  onSubmit(formValue) {
-    console.log(formValue);
+
+  addRemi() {
+    console.log("this.state", this.state);
+    console.log(this.props);
+    this.props.AddContactRed(this.state);
   }
 
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field name="name" component={this.inputView} />
-
-        <Field name="num" component={this.inputView} />
-
-        <Field name="email" component={this.inputView} />
-
-        <Field name="address" component={this.inputView} />
-
-        <button>Sumbit</button>
-      </form>
+      <div>
+        <div className="form-inline">
+          <div className="form-group">
+            <input
+              className="form-control"
+              placeholder="Name"
+              onChange={event => this.setState({ name: event.target.value })}
+            />
+            <input
+              className="form-control"
+              placeholder="Phone"
+              onChange={event => this.setState({ phone: event.target.value })}
+            />
+            <input
+              className="form-control"
+              placeholder="email"
+              onChange={event => this.setState({ email: event.target.value })}
+            />
+            <input
+              className="form-control"
+              placeholder="address"
+              onChange={event => this.setState({ address: event.target.value })}
+            />
+          </div>
+          <button className="btn btn-success" onClick={() => this.addRemi()}>
+            Add reminder
+          </button>
+        </div>
+      </div>
     );
   }
 }
 
-// const validate = formValue => {
-//   const error = {};
-//   if (!formValue.title) {
-//     error.title = "You must enter the title";
-//   }
-//   if (!formValue.num) {
-//     error.num = "You must enter the number";
-//   }
-//   if (!formValue.email) {
-//     error.email = "You must enter the email";
-//   }
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ AddContactRed }, dispatch);
+};
 
-//   if (!formValue.address) {
-//     error.address = "You must enter the address";
-//   }
+const mapStateToProps = state => {
+  console.log("state", state);
+};
 
-//   return error;
-// };
-export default reduxForm({
-  form: "Addcontact"
-  // validate: validate
-})(AddContact);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

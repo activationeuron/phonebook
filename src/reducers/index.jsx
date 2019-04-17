@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { reducer } from "redux-form";
+import { reducer as formReducer } from "redux-form";
 const phonenumber = () => {
   return [
     {
@@ -33,16 +33,16 @@ const selectedNumber = (selectedNumber = null, actions) => {
   return selectedNumber;
 };
 
-const addContact = (contacts = [], action) => {
+const Contacts = (contacts = [], action) => {
   if (action.type === "ADD_CONTACT") {
-    return [...contacts, action.payload];
+    return [...contacts, { contact: action.payload, id: Math.random() }];
   }
   return contacts;
 };
 
 export default combineReducers({
-  addContact: addContact,
+  Contact: Contacts,
   numbers: phonenumber,
   selectednumber: selectedNumber,
-  form: reducer
+  form: formReducer
 });

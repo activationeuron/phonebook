@@ -7,6 +7,8 @@ import reducer from "./reducers/index";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 
+import addContact from "./components/AddContact";
+
 const store = createStore(reducer, composeWithDevTools());
 
 ReactDOM.render(
